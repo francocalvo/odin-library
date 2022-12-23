@@ -1,6 +1,7 @@
 class cModal {
   constructor(id, options, btns = null) {
     const targetEl = document.getElementById(id);
+    console.log(targetEl);
     this.modal = new Modal(targetEl, options);
 
     if (btns) {
@@ -11,14 +12,24 @@ class cModal {
 
   setButtonsListeners() {
     this.btns.forEach((btn) => {
-      if (btn.dataset.modal == "hide") {
+      const dataLabel = `modal${
+        btn.dataset.modal[0].toUpperCase() + btn.dataset.modal.substring(1)
+      }`;
+      if (btn.dataset[dataLabel] == "hide") {
         btn.addEventListener("click", (e) => {
           e.preventDefault();
           this.modal.hide();
         });
       }
 
-      if (btn.dataset.modal == "show") {
+      if (btn.dataset[dataLabel] == "show") {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          this.modal.show();
+        });
+      }
+
+      if (btn.dataset[dataLabel] == "continue") {
         btn.addEventListener("click", (e) => {
           e.preventDefault();
           this.modal.show();
@@ -33,21 +44,23 @@ const targetEl = document.getElementById("modalEl");
 
 // options with default values
 const options = {
-  placement: "center-center",
-  backdrop: "dynamic",
-  backdropClasses:
-    "bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40",
-  onHide: () => {
-    console.log("modal is hidden");
-  },
-  onShow: () => {
-    console.log("modal is shown");
-  },
-  onToggle: () => {
-    console.log("modal has been toggled");
+  options: {
+    placement: "center-center",
+    backdrop: "dynamic",
+    backdropClasses:
+      "bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40",
+    onHide: () => {
+      console.log("modal is hidden");
+    },
+    onShow: () => {
+      console.log("modal is shown");
+    },
+    onToggle: () => {
+      console.log("modal has been toggled");
+    },
   },
 };
 
-const btns = document.querySelectorAll("button[data-modal]");
-
-const modal = new cModal("modalEl", options, btns);
+const btns = document.querySelectorAll("button[data-modal='add']");
+console.log(btns);
+const modalAdd = new cModal("modalAdd", options, btns);
