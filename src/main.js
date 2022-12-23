@@ -1,7 +1,8 @@
 class cModal {
   constructor(id, options, btns = null) {
     const targetEl = document.getElementById(id);
-    this.closeBtn = this.modal = new Modal(targetEl, options);
+    this.modal = new Modal(targetEl, options);
+
     if (btns) {
       this.btns = btns;
       this.setButtonsListeners();
@@ -9,25 +10,21 @@ class cModal {
   }
 
   setButtonsListeners() {
-    console.log(Array(btns[]))
-    for (const btn in this.btns) {
-      console.log(btn)
-      if (btn.dataset.modal == "close") {
+    this.btns.forEach((btn) => {
+      if (btn.dataset.modal == "hide") {
         btn.addEventListener("click", (e) => {
           e.preventDefault();
-          this.modal.close();
+          this.modal.hide();
         });
       }
-    }
 
-    for (const btn in this.btns) {
-      if (btn.dataset.modal == "close") {
+      if (btn.dataset.modal == "show") {
         btn.addEventListener("click", (e) => {
           e.preventDefault();
-          this.modal.open();
+          this.modal.show();
         });
       }
-    }
+    });
   }
 }
 
@@ -52,6 +49,5 @@ const options = {
 };
 
 const btns = document.querySelectorAll("button[data-modal]");
-console.log(btns);
 
-const modal = new cModal(targetEl, options, btns);
+const modal = new cModal("modalEl", options, btns);
