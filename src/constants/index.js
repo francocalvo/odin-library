@@ -1,4 +1,5 @@
-const base_url = "https://www.googleapis.com/books/v1/volumes";
+const base_url_gbooks = "https://www.googleapis.com/books/v1/volumes";
+const base_url_openlibrary = "http://openlibrary.org/api/books?bibkeys=ISBN:";
 const query = "?q=";
 
 // parameters
@@ -34,10 +35,9 @@ export async function searchQuery(
   filter = filters.all,
   order = orders.relevance
 ) {
-  const queryString = `${base_url}${query}${params.title}${title.replaceAll(
-    " ",
-    "+"
-  )}${
+  const queryString = `${base_url_gbooks}${query}${
+    params.title
+  }${title.replaceAll(" ", "+")}${
     author ? "+" + params.author + "=" + author.replaceAll(" ", "+") : ""
   }${filter}${order}&akey=${apikey}`;
 
@@ -54,3 +54,17 @@ export const options = {
   backdropClasses:
     "bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40",
 };
+
+export async function getExtraData(isbn) {
+  const query = `${base_url_openlibrary}${isbn}&format=json&jscmd=data`;
+  console.log(query);
+  const res = await fetch(query, {
+    method: "GET", // *GET, POST, PUT, DELETE, etc.
+    mode: "cors", // no-cors, *cors, same-origin );
+  });
+
+  console.log(res);
+  return res.json();
+}
+
+export function generateCard(title, short, author, pages, status) {}

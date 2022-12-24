@@ -1,7 +1,6 @@
-"use strict";
 import { ModalAdd } from "./components/ModalAdd.js";
 import { ModalSelect } from "./components/ModalSelect.js";
-import { Library } from "./components/Library.je"
+import { Library } from "./components/Library.js";
 import * as model from "./model.js";
 import * as constants from "./constants/index.js";
 
@@ -15,6 +14,7 @@ class App {
       constants.options,
       btnsSelect
     );
+    this.library = new Library();
     this.setupSelectForm(this.modalSelect.form);
     this.setupAddForm(this.modalAdd.form);
   }
@@ -25,6 +25,7 @@ class App {
       let books;
       this.searchBook(e.target).then((res) => {
         books = res.items;
+        model.state.lastSearch = books;
         this.modalAdd.hide();
         this.modalSelect.displayBooks(books);
       });
@@ -34,8 +35,24 @@ class App {
   setupSelectForm(form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-
+      this.selectBook(form);
     });
+  }
+
+  async selectBook(form) {
+    const data = new FormData(form);
+    const bookId = data.get("book");
+    let bookInfo;
+    for (let book of model.state.lastSearch) {
+      console.log(bookId, book.id);
+      bookInfo = book.id === bookId ? book : bookInfo;
+    }
+    model.state.bookList.push(bookInfo);
+    this.library.addBook(bookInfo);
+    const isbn = bookInfo.volumeInfo.industryIdentifiers[0].identifier;
+    const extra = await constants.getExtraData(isbn);
+    console.log(extra);
+    this.modalSelect.hide();
   }
 
   async searchBook(form) {

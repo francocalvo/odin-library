@@ -2,6 +2,7 @@ export const state = {
   apikey: null,
   length: 0,
   bookList: [],
+  lastSearch: {},
 };
 
 export function addBook(json) {
@@ -11,6 +12,6 @@ export function addBook(json) {
     author: json.author,
     pages: json.pages,
     short: json.short,
-    status: json.status
+    status: json.status,
   });
 }

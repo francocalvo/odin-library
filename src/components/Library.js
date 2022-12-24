@@ -1,3 +1,9 @@
 export class Library {
-  constructor() {}
+  constructor() {
+    this.main = document.getElementById("library");
+  }
+
+  addBook(bookInfo) {
+    console.log(bookInfo)
+  }
 }
