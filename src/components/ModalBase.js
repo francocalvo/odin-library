@@ -36,7 +36,7 @@ export class ModalBase {
 
       if (btn.dataset[dataLabel] == "show") {
         btn.addEventListener("click", (e) => {
-          e.preventDefault();
+          /* e.preventDefault(); */
           this.modal.show();
         });
       }

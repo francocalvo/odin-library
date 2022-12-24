@@ -1,30 +1,26 @@
-const base_url_gbooks = "https://www.googleapis.com/books/v1/volumes";
+const base_url_search = "http://openlibrary.org/search.json?";
 const base_url_openlibrary = "http://openlibrary.org/api/books?bibkeys=ISBN:";
-const query = "?q=";
+const base_url_cover = "https://covers.openlibrary.org/b/isbn/";
+const base_url_description = "https://openlibrary.org/isbn/";
+/* const base_url_description = "https://openlibrary.org/books/"; */
 
 // parameters
 export const parameters = {
-  title: "intitle:",
-  author: "inauthor:",
-  publisher: "inpublisher:",
-  category: "subject:",
-  isbn: "isbn:",
+  title: "title=",
+  author: "&author=",
+  page: "&page=",
 };
 
-// order
-export const orders = {
-  relevance: "&orderBy=relevance",
-  newest: "&orderBy=newest",
-};
-
-// filters
+// limit
 export const filters = {
-  all: " ",
-  partial_preview: "&filter=partial",
-  full_preview: "&filter=full",
-  free: "&filter=free-ebooks",
-  paid: "&filter=paid-ebooks",
-  ebooks: "&filter=ebooks",
+  none: "&orderBy=relevance",
+  limited: "&limit=10",
+};
+
+export const coverSize = {
+  small: "-S.jpg",
+  medium: "-M.jpg",
+  large: "-L.jpg",
 };
 
 export async function searchQuery(
@@ -32,20 +28,24 @@ export async function searchQuery(
   author = null,
   apikey,
   params = parameters,
-  filter = filters.all,
-  order = orders.relevance
+  filter = filters.limited
 ) {
-  const queryString = `${base_url_gbooks}${query}${
-    params.title
-  }${title.replaceAll(" ", "+")}${
+  const queryString = `${base_url_search}${params.title}${title.replaceAll(
+    " ",
+    "+"
+  )}${
     author ? "+" + params.author + "=" + author.replaceAll(" ", "+") : ""
-  }${filter}${order}&akey=${apikey}`;
+  }${filter}`;
+
+  console.log(queryString);
 
   const res = await fetch(queryString, {
     method: "GET", // *GET, POST, PUT, DELETE, etc.
     mode: "cors", // no-cors, *cors, same-origin );
   });
-  return res;
+
+  console.log(res);
+  return res.json();
 }
 
 export const options = {
@@ -56,7 +56,7 @@ export const options = {
 };
 
 export async function getExtraData(isbn) {
-  const query = `${base_url_openlibrary}${isbn}&format=json&jscmd=data`;
+  const query = `${base_url_openlibrary}${isbn}&format=json&jscmd=details`;
   console.log(query);
   const res = await fetch(query, {
     method: "GET", // *GET, POST, PUT, DELETE, etc.
@@ -66,5 +66,19 @@ export async function getExtraData(isbn) {
   console.log(res);
   return res.json();
 }
+
+export function getCover(isbn, size = coverSize.large) {
+  return `${base_url_cover}${isbn}${size}`;
+}
+
+export async function getDescription(work_key) {
+  const query = `${base_url_description}${work_key}.json`;
+  const res = await fetch(query, { method: "GET", mode: "cors" });
+  const obj = await res.json();
+  return obj.hasOwnProperty("description")
+    ? obj.description
+    : "Descripcion no disponible";
+}
+
 
 export function generateCard(title, short, author, pages, status) {}

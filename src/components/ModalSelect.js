@@ -8,13 +8,14 @@ export class ModalSelect extends ModalBase {
   displayBooks(books) {
     this.modal.show();
     const selection = this.form.getElementsByTagName("select")[0];
+    selection.innerHTML = "";
     for (let b of books) {
-      const title = b.volumeInfo.title;
-      const author = b.volumeInfo.hasOwnProperty("authors")
-        ? b.volumeInfo.authors.join(", ")
+      const title = b.title;
+      const author = b.hasOwnProperty("author_name")
+        ? b.author_name.join(", ")
         : "Desconocido";
       const option = document.createElement("option");
-      option.value = b.id;
+      option.value = b.key;
       option.innerText = `${title} - ${author}`;
       selection.appendChild(option);
     }

@@ -18,11 +18,6 @@ export class ModalAdd extends ModalBase {
       if (btn.dataset[dataLabel] == "show") {
         btn.addEventListener("click", (e) => {
           e.preventDefault();
-          const hiddenField = document.getElementById("apikey");
-          if (this.api === false) {
-            hiddenField.classList.toggle("hidden");
-            this.api = true;
-          }
         });
       }
     });

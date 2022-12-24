@@ -22,12 +22,10 @@ class App {
   setupAddForm(form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      let books;
       this.searchBook(e.target).then((res) => {
-        books = res.items;
-        model.state.lastSearch = books;
+        model.state.lastSearch = res;
         this.modalAdd.hide();
-        this.modalSelect.displayBooks(books);
+        this.modalSelect.displayBooks(res);
       });
     });
   }
@@ -44,15 +42,9 @@ class App {
     const bookId = data.get("book");
     let bookInfo;
     for (let book of model.state.lastSearch) {
-      console.log(bookId, book.id);
-      bookInfo = book.id === bookId ? book : bookInfo;
+      bookInfo = book.key === bookId ? book : bookInfo;
     }
-    model.state.bookList.push(bookInfo);
-    this.library.addBook(bookInfo);
-    const isbn = bookInfo.volumeInfo.industryIdentifiers[0].identifier;
-    const extra = await constants.getExtraData(isbn);
-    console.log(extra);
-    this.modalSelect.hide();
+    this.addBook(bookInfo);
   }
 
   async searchBook(form) {
@@ -64,18 +56,21 @@ class App {
         console.log("FORMS: Registering book&author info");
         info[pair[0]] = pair[1];
       }
-      if (pair[0] === "apikey") {
-        console.log("FORMS: Registering API Key");
-        model.state.apikey = pair[1];
-        this.modalAdd.api = true;
-      }
     }
     const res = await constants.searchQuery(
       info.book,
       info.author,
-      model.state.apikey
     );
-    return res.json();
+    return res.docs;
+  }
+
+  async addBook(bookInfo) {
+    model.state.bookList.push(bookInfo);
+    const isbn = bookInfo.isbn[0];
+    const cover = constants.getCover(isbn);
+    const description = await constants.getDescription(isbn);
+    this.library.addBook(bookInfo, description, cover);
+    this.modalSelect.hide();
   }
 }
 
