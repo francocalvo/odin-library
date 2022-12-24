@@ -89,7 +89,7 @@
           <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
             Add book information
           </h3>
-          <form class="space-y-6" action="#">
+          <form id="add-form" class="space-y-6" action="#">
             <div>
               <label for="book" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Book's name</label>
               <input type="text" name="book" id="book"
@@ -100,6 +100,12 @@
               <label for="author" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Author's
                 name</label>
               <input type="text" name="author" id="author" placeholder="George Martin"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" />
+            </div>
+
+            <div id="apikey" class="hidden">
+              <label for="apikey" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">API Key</label>
+              <input type="text" name="apikey" id="apikey"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" />
             </div>
             <button type="submit"
@@ -113,7 +119,7 @@
   </div>
 
   <!-- Main modal -->
-  <div id="modalEl" tabindex="-1" aria-hidden="true"
+  <div id="modalSelect" tabindex="-1" aria-hidden="true"
     class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
     <div class="relative w-full h-full max-w-md md:h-auto">
       <!-- Modal content -->
@@ -128,11 +134,6 @@
                 class="block mb-4 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
               <select multiple id="countries_multiple"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>Choose countries</option>
-                <option value="US">United States</option>
-                <option value="CA">Canada</option>
-                <option value="FR">France</option>
-                <option value="DE">Germany</option>
               </select>
             </div>
 
