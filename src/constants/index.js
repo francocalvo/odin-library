@@ -1,5 +1,5 @@
-const base_url_search = "http://openlibrary.org/search.json?";
-const base_url_openlibrary = "http://openlibrary.org/api/books?bibkeys=ISBN:";
+const base_url_search = "https://openlibrary.org/search.json?";
+const base_url_openlibrary = "https://openlibrary.org/api/books?bibkeys=ISBN:";
 const base_url_cover = "https://covers.openlibrary.org/b/isbn/";
 const base_url_description = "https://openlibrary.org/isbn/";
 /* const base_url_description = "https://openlibrary.org/books/"; */
