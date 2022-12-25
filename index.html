@@ -4,6 +4,7 @@
     <title></title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="./src/assets/logo.png" type="image/jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -27,10 +28,16 @@
   <body>
     <div class="min-h-screen flex flex-col">
       <header
-        class="bg-nord10 p-2 md:pl-32 flex items-center justify-center md:justify-start"
+        class="bg-nord1 p-2 md:pl-32 flex md:h-28 items-center justify-center md:justify-start"
       >
-        <img src="src/assets/logo-round.jpg" class="rounded-full w-12 h-12" />
-        <h1 class="pl-2" style="font-family: 'Paytone One', sans-serif">
+        <img
+          src="src/assets/logo.png"
+          class="rounded-full w-12 h-12 md:w-20 md:h-20"
+        />
+        <h1
+          class="text-nord5 text-4xl pl-6"
+          style="font-family: 'Paytone One', sans-serif"
+        >
           VAPORESO
         </h1>
       </header>
@@ -116,7 +123,7 @@
       </div>
 
       <footer
-        class="md:fixed bottom-0 left-0 z-20 p-4 w-full bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600"
+        class="flex flex-col items-center md:fixed bottom-0 left-0 z-20 p-4 w-full bg-white border-t border-gray-200 shadow md:flex-row md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600"
       >
         <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
           <a href="https://flowbite.com/" class="hover:underline"
