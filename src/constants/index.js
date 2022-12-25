@@ -73,12 +73,17 @@ export function getCover(isbn, size = coverSize.large) {
 
 export async function getDescription(work_key) {
   const query = `${base_url_description}${work_key}.json`;
+  console.log(query)
   const res = await fetch(query, { method: "GET", mode: "cors" });
   const obj = await res.json();
+  console.log("Inside constants");
+  console.log(obj, obj.description);
+  console.log("Exiting constants");
   return obj.hasOwnProperty("description")
-    ? obj.description
+    ? typeof obj.description === "string"
+      ? obj.description
+      : obj.description.value
     : "Descripcion no disponible";
 }
-
 
 export function generateCard(title, short, author, pages, status) {}
