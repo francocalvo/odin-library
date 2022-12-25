@@ -1,146 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Paytone+One&display=swap");
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./public/style.css" rel="stylesheet" />
+    <script src="./src/controller.js" type="module" defer></script>
+  </head>
 
-<head>
-  <title></title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="./public/style.css" rel="stylesheet" />
-  <script src="./src/controller.js" type="module" defer></script>
-</head>
+  <body>
+    <div class="min-h-screen flex flex-col">
+      <header
+        class="bg-nord10 p-2 md:pl-32 flex items-center justify-center md:justify-start"
+      >
+        <img src="src/assets/logo-round.jpg" class="rounded-full w-12 h-12" />
+        <h1 class="pl-2" style="font-family: 'Paytone One', sans-serif">
+          VAPORESO
+        </h1>
+      </header>
 
-<body>
-  <div class="min-h-screen flex flex-col">
-    <header class="bg-nord10 p-2">Header</header>
+      <div class="flex-1 flex flex-col sm:flex-row">
+        <main
+          id="library"
+          class="flex flex-wrap flex-1 justify-center border-x-4 border-gray-300 content-start gap-10 bg-nord4 p-5"
+        >
+          <!-- <a -->
+          <!--   href="#" -->
+          <!--   class="flex flex-col items-center bg-white border rounded-lg shadow-me h-fit md:h-80 p-2 md:flex-row md:items-center md:w-168 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700" -->
+          <!-- > -->
+          <!--   <img -->
+          <!--     class="object-cover rounded-t-lg w-48 h-auto md:w-48 md:rounded-none md:rounded-l-lg" -->
+          <!--     src="https://contentv2.tap-commerce.com/cover/large/9789506442279_1.jpg" -->
+          <!--     alt="" -->
+          <!--   /> -->
+          <!--   <div -->
+          <!--     class="flex flex-col items-center justify-between p-4 leading-normal md:items-start" -->
+          <!--   > -->
+          <!--     <h5 -->
+          <!--       class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white" -->
+          <!--     > -->
+          <!--       Juego de Tronos -->
+          <!--     </h5> -->
+          <!---->
+          <!--     <p -->
+          <!--       class="mb-3 font-normal max-h-0 max-w-96 md:max-h-28 overflow-hidden md:overflow-scroll text-gray-700 dark:text-gray-400" -->
+          <!--     > -->
+          <!--       En el legendario mundo de los Siete Reinos, donde el verano -->
+          <!--       puede durar décadas y el invierno toda una vida, y donde rastros -->
+          <!--       de una magia inmemorial surgen en los rincones más sombríos, la -->
+          <!--       tierra del norte, Invernalia, está resguardada por un colosal -->
+          <!--       muro de hielo que detiene a fuerzas oscuras y sobrenaturales. En -->
+          <!--       este majestuoso escenario, lord Stark y su familia se encuentran -->
+          <!--       en el centro de un conflicto que desatará todas las pasiones: la -->
+          <!--       traición y la lealtad, la compasión y la sed de venganza, el -->
+          <!--       amor y el poder, la lujuria y el incesto, todo ello para ganar -->
+          <!--       la más mortal de las batallas: el trono de hierro, una poderosa -->
+          <!--       trampa que atrapará a los personajes... y al lector. -->
+          <!--     </p> -->
+          <!--     <ul class="mb-3 font-normal text-gray-700 dark:text-gray-400"> -->
+          <!--       <li>Autor: George Martin</li> -->
+          <!--       <li>Pages: 937</li> -->
+          <!--       <li>Estado: no leído</li> -->
+          <!--     </ul> -->
+          <!--   </div> -->
+          <!--   <button -->
+          <!--     type="button" -->
+          <!--     class="md:self-end text-white bg-nord9 hover:bg-nord10 focus:outline-none focus:ring-4 focus:ring-nord14 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" -->
+          <!--   > -->
+          <!--     Leído -->
+          <!--   </button> -->
+          <!-- </a> -->
+          <!---->
+          <button
+            href="#"
+            class="flex flex-col items-center justify-center bg-white border rounded-lg shadow-me w-full md:w-168 md:h-80 p-2 md:flex-row md:items-center hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+            data-modal="add"
+            data-modal-add="show"
+          >
+            <div
+              class="flex flex-col items-center justify-between p-4 leading-normal md:items-start"
+            >
+              <h5
+                class="mb-2 text-2xl font-bold tracking-tight text-gray-600 dark:text-white"
+              >
+                <svg class="w-32 h-32" viewBox="0 0 24 24">
+                  <path
+                    fill="currentColor"
+                    d="M19,11H15V15H13V11H9V9H13V5H15V9H19M20,2H8A2,2 0 0,0 6,4V16A2,2 0 0,0 8,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2M4,6H2V20A2,2 0 0,0 4,22H18V20H4V6Z"
+                  />
+                </svg>
+                Agregar libro
+              </h5>
+            </div>
+          </button>
+        </main>
 
-    <div class="flex-1 flex flex-col sm:flex-row">
-      <main id="library" class="flex flex-wrap justify-start gap-10 flex-1 bg-nord6 p-5">
-        <a href="#"
-          class="flex flex-col items-center justify-center bg-white border rounded-lg shadow-me h-fit md:h-80 p-2 md:flex-row md:items-center md:w-168 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-          <img class="object-cover rounded-t-lg w-48 h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-            src="https://contentv2.tap-commerce.com/cover/large/9789506442279_1.jpg" alt="" />
-          <div class="flex flex-col items-center justify-between p-4 leading-normal md:items-start">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Juego de Tronos
-            </h5>
+        <nav class="order-first sm:w-32 bg-nord6 p-2"></nav>
+        <aside class="sm:w-32 bg-nord6 p-2"></aside>
+      </div>
 
-            <p
-              class="mb-3 font-normal max-h-0 max-w-96 md:max-h-28 overflow-hidden md:overflow-scroll text-gray-700 dark:text-gray-400">
-              En el legendario mundo de los Siete Reinos, donde el verano
-              puede durar décadas y el invierno toda una vida, y donde rastros
-              de una magia inmemorial surgen en los rincones más sombríos, la
-              tierra del norte, Invernalia, está resguardada por un colosal
-              muro de hielo que detiene a fuerzas oscuras y sobrenaturales. En
-              este majestuoso escenario, lord Stark y su familia se encuentran
-              en el centro de un conflicto que desatará todas las pasiones: la
-              traición y la lealtad, la compasión y la sed de venganza, el
-              amor y el poder, la lujuria y el incesto, todo ello para ganar
-              la más mortal de las batallas: el trono de hierro, una poderosa
-              trampa que atrapará a los personajes... y al lector.
-            </p>
-            <ul class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              <li>Autor: George Martin</li>
-              <li>Pages: 937</li>
-              <li>Estado: no leído</li>
-            </ul>
-          </div>
-        </a>
-
-        <button href="#"
-          class="flex flex-col items-center justify-center bg-white border rounded-lg shadow-me h-80 w-full md:w-168 md:h-80 p-2 md:flex-row md:items-center hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
-          data-modal="add" data-modal-add="show">
-          <div class="flex flex-col items-center justify-between p-4 leading-normal md:items-start">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-600 dark:text-white">
-              <svg class="w-32 h-32" viewBox="0 0 24 24">
-                <path fill="currentColor"
-                  d="M19,11H15V15H13V11H9V9H13V5H15V9H19M20,2H8A2,2 0 0,0 6,4V16A2,2 0 0,0 8,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2M4,6H2V20A2,2 0 0,0 4,22H18V20H4V6Z" />
-              </svg>
-              Agregar libro
-            </h5>
-          </div>
-        </button>
-      </main>
-
-      <nav class="order-first sm:w-32 bg-nord0 p-2"></nav>
-      <aside class="sm:w-32 bg-nord0 p-2"></aside>
+      <footer
+        class="md:fixed bottom-0 left-0 z-20 p-4 w-full bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600"
+      >
+        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+          <a href="https://flowbite.com/" class="hover:underline"
+            >Franco Calvo</a
+          >. All Rights Reserved.
+        </span>
+        <ul
+          class="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0"
+        >
+          <li>
+            <a
+              href="https://openlibrary.org"
+              class="mr-4 hover:underline md:mr-6"
+              >OpenLibrary</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://github.com/francocalvo/odin-library"
+              class="mr-4 hover:underline md:mr-6"
+              >Repo</a
+            >
+          </li>
+          <li>
+            <a href="https://github.com/francocalvo" class="hover:underline"
+              >Github</a
+            >
+          </li>
+        </ul>
+      </footer>
     </div>
 
-    <footer class="bg-gray-100 p-2">Footer</footer>
-  </div>
+    <!-- Main modal -->
+    <div
+      id="modalAdd"
+      tabindex="-1"
+      aria-hidden="true"
+      class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full"
+    >
+      <div class="relative w-full h-full max-w-md md:h-auto">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <button
+            type="button"
+            id="btn-hide-modal"
+            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+            data-modal="add"
+            data-modal-add="hide"
+          >
+            <svg
+              aria-hidden="true"
+              class="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+          <div class="px-6 py-6 lg:px-8">
+            <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
+              Add book information
+            </h3>
+            <form id="add-form" class="space-y-6" action="#">
+              <div>
+                <label
+                  for="book"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Book's name</label
+                >
+                <input
+                  type="text"
+                  name="book"
+                  id="book"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                  placeholder="Juego de Tronos"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="author"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Author's name</label
+                >
+                <input
+                  type="text"
+                  name="author"
+                  id="author"
+                  placeholder="George Martin"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                />
+              </div>
 
-  <!-- Main modal -->
-  <div id="modalAdd" tabindex="-1" aria-hidden="true"
-    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-    <div class="relative w-full h-full max-w-md md:h-auto">
-      <!-- Modal content -->
-      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-        <button type="button" id="btn-hide-modal"
-          class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-          data-modal="add" data-modal-add="hide">
-          <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-              clip-rule="evenodd"></path>
-          </svg>
-          <span class="sr-only">Close modal</span>
-        </button>
-        <div class="px-6 py-6 lg:px-8">
-          <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
-            Add book information
-          </h3>
-          <form id="add-form" class="space-y-6" action="#">
-            <div>
-              <label for="book" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Book's name</label>
-              <input type="text" name="book" id="book"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                placeholder="Juego de Tronos" required />
-            </div>
-            <div>
-              <label for="author" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Author's
-                name</label>
-              <input type="text" name="author" id="author" placeholder="George Martin"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" />
-            </div>
-
-            <button type="submit"
-              class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-              Search for book
-            </button>
-          </form>
+              <button
+                type="submit"
+                class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Search for book
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Main modal -->
-  <div id="modalSelect" tabindex="-1" aria-hidden="true"
-    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-    <div class="relative w-full h-full max-w-md md:h-auto">
-      <!-- Modal content -->
-      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-        <div class="px-6 py-6 lg:px-8">
-          <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
-            Select book
-          </h3>
-          <form id="selection" class="mt-6 space-y-6" action="#">
-            <div>
-              <label for="book">Choose one result:</label>
-              <select multiple name="book" id="book"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></select>
-            </div>
-
-            <button type="submit" form="selection" data-modal="select" data-modal-select="add"
-              class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+    <!-- Main modal -->
+    <div
+      id="modalSelect"
+      tabindex="-1"
+      aria-hidden="true"
+      class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full"
+    >
+      <div class="relative w-full h-full max-w-md md:h-auto">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <div class="px-6 py-6 lg:px-8">
+            <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
               Select book
-            </button>
-          </form>
+            </h3>
+            <form id="selection" class="mt-6 space-y-6" action="#">
+              <div>
+                <label for="book">Choose one result:</label>
+                <select
+                  multiple
+                  name="book"
+                  id="book"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                ></select>
+              </div>
+
+              <button
+                type="submit"
+                form="selection"
+                data-modal="select"
+                data-modal-select="add"
+                class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Select book
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script src="./node_modules/flowbite/dist/flowbite.js"></script>
-</body>
-
+    <script src="./node_modules/flowbite/dist/flowbite.js"></script>
+  </body>
 </html>
