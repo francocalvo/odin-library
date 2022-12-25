@@ -17,7 +17,7 @@ export function createCardHTML(book) {
               <li>Autor: ${book.authors}</li>
               <li>Publised: ${book.publish}</li>
               ${book.pages !== null ? `<li>Pages: ${book.pages}</li>` : ""}
-              <li>Estado: no leído</li>
+              <li class="status">Estado: no leído</li>
             </ul>
           </div>
 

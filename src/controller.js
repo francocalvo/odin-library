@@ -57,20 +57,24 @@ class App {
         info[pair[0]] = pair[1];
       }
     }
-    const res = await constants.searchQuery(
-      info.book,
-      info.author,
-    );
+    const res = await constants.searchQuery(info.book, info.author);
     return res.docs;
   }
 
   async addBook(bookInfo) {
-    model.state.bookList.push(bookInfo);
+    model.addBook(bookInfo);
     const isbn = bookInfo.isbn[0];
     const cover = constants.getCover(isbn);
     const description = await constants.getDescription(isbn);
-    this.library.addBook(bookInfo, description, cover);
+    const card = this.library.addBook(bookInfo, description, cover);
+    const btn = card.getButton();
+    btn.addEventListener("click", card.toggleRead.bind(card));
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      model.toggleRead(card.data["bookInfo"]);
+    });
     this.modalSelect.hide();
+    console.log(model.state.bookList)
   }
 }
 

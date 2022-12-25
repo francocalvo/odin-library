@@ -1,7 +1,9 @@
 import { createCardHTML } from "../constants/card.js";
+import { Card } from "./Card.js";
 export class Library {
   constructor() {
     this.main = document.getElementById("library");
+    this.cards = [];
   }
 
   addBook(bookInfo, description, cover) {
@@ -26,8 +28,14 @@ export class Library {
       status: false,
     };
 
-    console.log(data);
     const html = createCardHTML(data);
     this.main.insertAdjacentHTML("afterbegin", html);
+    return this.addCard(bookInfo, description, cover);
+  }
+
+  addCard(bookInfo, description, cover) {
+    const card = new Card(bookInfo, description, cover);
+    this.cards.push(card);
+    return this.cards[this.cards.length - 1];
   }
 }

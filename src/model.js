@@ -7,11 +7,15 @@ export const state = {
 
 export function addBook(json) {
   state.length++;
-  bookList.push({
-    title: json.title,
-    author: json.author,
-    pages: json.pages,
-    short: json.short,
-    status: json.status,
+  json["status"] = false;
+  state.bookList.push(json);
+}
+
+export function toggleRead(json) {
+  state.bookList.forEach((book) => {
+    if (book === json) {
+      book.status = book.status ? false : true;
+    }
   });
+  console.log(state.bookList)
 }
